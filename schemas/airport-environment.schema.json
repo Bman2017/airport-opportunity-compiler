@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://arns.example/schemas/airport-environment.schema.json",
+  "title": "Canonical Airport Environment Manifest",
+  "type": "object",
+  "required": ["id", "canonicalType", "canonicalTypeVersion", "image", "objects"],
+  "properties": {
+    "id": {"type": "string"},
+    "canonicalType": {"const": "AirportEnvironment"},
+    "canonicalTypeVersion": {"type": "string"},
+    "title": {"type": "string"},
+    "image": {
+      "type": "object",
+      "required": ["path", "coordinateSystem"],
+      "properties": {
+        "path": {"type": "string"},
+        "coordinateSystem": {"const": "normalized-0-1"}
+      }
+    },
+    "objects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "label", "canonicalType", "category", "geometry", "opportunityFamilies", "queryProfile"],
+        "properties": {
+          "id": {"type": "string"},
+          "label": {"type": "string"},
+          "canonicalType": {"type": "string"},
+          "category": {"type": "string"},
+          "geometry": {
+            "type": "object",
+            "required": ["shape", "points"],
+            "properties": {
+              "shape": {"enum": ["polygon", "bbox", "point"]},
+              "points": {"type": "array", "minItems": 1}
+            }
+          },
+          "relationships": {"type": "array"},
+          "opportunityFamilies": {"type": "array", "items": {"type": "string"}},
+          "queryProfile": {"type": "string"}
+        }
+      }
+    }
+  }
+}
