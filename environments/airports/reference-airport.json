@@ -1,0 +1,72 @@
+{
+  "id": "ENV_AIRPORT_REFERENCE_001",
+  "canonicalType": "AirportEnvironment",
+  "canonicalTypeVersion": "1.0.0",
+  "title": "Reference Commercial Airport Opportunity Environment",
+  "image": {
+    "path": "assets/airport-reference.png",
+    "coordinateSystem": "normalized-0-1"
+  },
+  "objects": [
+    {
+      "id": "AIR.RUNWAY.NETWORK.001",
+      "label": "Runway Network",
+      "canonicalType": "RunwayNetwork",
+      "category": "Airside",
+      "geometry": {"shape": "polygon", "points": [[0.0,0.12],[0.82,0.08],[0.91,0.23],[0.24,0.28],[0.0,0.24]]},
+      "relationships": [{"type": "connectedTo", "target": "AIR.TAXIWAY.NETWORK.001"}],
+      "opportunityFamilies": ["Low-carbon pavement","Foreign-object detection","Runway condition sensing","Airfield electrification","Autonomous inspection"],
+      "queryProfile": "airport-airside"
+    },
+    {
+      "id": "AIR.TAXIWAY.NETWORK.001",
+      "label": "Taxiway and Apron Network",
+      "canonicalType": "TaxiwayApronNetwork",
+      "category": "Airside",
+      "geometry": {"shape": "polygon", "points": [[0.20,0.22],[0.91,0.18],[0.95,0.43],[0.24,0.45]]},
+      "relationships": [{"type": "connectedTo", "target": "AIR.RUNWAY.NETWORK.001"},{"type": "serves", "target": "AIR.TERMINAL.001"}],
+      "opportunityFamilies": ["Surface sensing","Autonomous ground movement","Electric ground support equipment","Digital twins","Deicing efficiency"],
+      "queryProfile": "airport-airside"
+    },
+    {
+      "id": "AIR.TERMINAL.001",
+      "label": "Passenger Terminal and Gate Complex",
+      "canonicalType": "PassengerTerminal",
+      "category": "Buildings",
+      "geometry": {"shape": "polygon", "points": [[0.30,0.23],[0.76,0.22],[0.77,0.45],[0.42,0.46],[0.31,0.38]]},
+      "relationships": [{"type": "servedBy", "target": "AIR.UTILITY.PLANT.001"},{"type": "connectedTo", "target": "AIR.PARKING.GARAGE.001"}],
+      "opportunityFamilies": ["Smart HVAC","Passenger flow analytics","Indoor air quality","Energy efficiency","Baggage automation","Security screening"],
+      "queryProfile": "airport-terminal"
+    },
+    {
+      "id": "AIR.UTILITY.PLANT.001",
+      "label": "Central Utility Plant",
+      "canonicalType": "CentralUtilityPlant",
+      "category": "Utilities",
+      "geometry": {"shape": "polygon", "points": [[0.24,0.55],[0.44,0.54],[0.45,0.79],[0.26,0.80]]},
+      "relationships": [{"type": "serves", "target": "AIR.TERMINAL.001"},{"type": "contains", "target": "AIR.COOLING.TOWERS.001"}],
+      "opportunityFamilies": ["District energy","Heat recovery","Thermal storage","Industrial water","AI controls","Electrification","Carbon capture"],
+      "queryProfile": "airport-utilities"
+    },
+    {
+      "id": "AIR.COOLING.TOWERS.001",
+      "label": "Cooling Towers",
+      "canonicalType": "CoolingTowerArray",
+      "category": "Utilities",
+      "geometry": {"shape": "polygon", "points": [[0.29,0.56],[0.39,0.55],[0.40,0.67],[0.29,0.68]]},
+      "relationships": [{"type": "partOf", "target": "AIR.UTILITY.PLANT.001"},{"type": "supports", "target": "AIR.TERMINAL.001"}],
+      "opportunityFamilies": ["Water efficiency","Heat rejection optimization","Predictive maintenance","Corrosion monitoring","Water treatment","Digital twins"],
+      "queryProfile": "airport-cooling"
+    },
+    {
+      "id": "AIR.PARKING.GARAGE.001",
+      "label": "Parking Garage and Ground Mobility Hub",
+      "canonicalType": "AirportParkingMobilityHub",
+      "category": "Mobility",
+      "geometry": {"shape": "polygon", "points": [[0.47,0.42],[0.73,0.42],[0.72,0.61],[0.48,0.61]]},
+      "relationships": [{"type": "connectedTo", "target": "AIR.TERMINAL.001"}],
+      "opportunityFamilies": ["Smart parking","EV charging","Vehicle-to-grid","Autonomous shuttles","Wayfinding","Demand management"],
+      "queryProfile": "airport-mobility"
+    }
+  ]
+}
