@@ -1,0 +1,62 @@
+[
+  {
+    "id": "DEMO.TECH.001",
+    "title": "AI Cooling Tower Optimization",
+    "entityType": "technology",
+    "objectIds": ["AIR.COOLING.TOWERS.001"],
+    "opportunityFamilies": ["Water efficiency", "Heat rejection optimization"],
+    "organization": "University Research Lab",
+    "readiness": "Pilot-ready",
+    "evidenceStatus": "synthetic-demo"
+  },
+  {
+    "id": "DEMO.PATENT.001",
+    "title": "Corrosion Monitoring Sensor Network",
+    "entityType": "patent",
+    "objectIds": ["AIR.COOLING.TOWERS.001"],
+    "opportunityFamilies": ["Corrosion monitoring"],
+    "organization": "National Laboratory",
+    "readiness": "Validated",
+    "evidenceStatus": "synthetic-demo"
+  },
+  {
+    "id": "DEMO.PILOT.001",
+    "title": "Airport District Energy Demonstration",
+    "entityType": "pilotSite",
+    "objectIds": ["AIR.UTILITY.PLANT.001"],
+    "opportunityFamilies": ["District energy", "Thermal storage"],
+    "organization": "Airport Innovation Partner",
+    "readiness": "Pilot-ready",
+    "evidenceStatus": "synthetic-demo"
+  },
+  {
+    "id": "DEMO.FUND.001",
+    "title": "Airfield Electrification Funding Program",
+    "entityType": "fundingProgram",
+    "objectIds": ["AIR.RUNWAY.NETWORK.001", "AIR.TAXIWAY.NETWORK.001"],
+    "opportunityFamilies": ["Airfield electrification", "Electric ground support equipment"],
+    "organization": "Federal Program",
+    "readiness": "Open",
+    "evidenceStatus": "synthetic-demo"
+  },
+  {
+    "id": "DEMO.RESEARCH.001",
+    "title": "Passenger Flow and Terminal Operations Research",
+    "entityType": "publication",
+    "objectIds": ["AIR.TERMINAL.001"],
+    "opportunityFamilies": ["Passenger flow analytics"],
+    "organization": "Research Consortium",
+    "readiness": "Published",
+    "evidenceStatus": "synthetic-demo"
+  },
+  {
+    "id": "DEMO.MOBILITY.001",
+    "title": "Vehicle-to-Grid Airport Mobility Hub",
+    "entityType": "corporateSolution",
+    "objectIds": ["AIR.PARKING.GARAGE.001"],
+    "opportunityFamilies": ["EV charging", "Vehicle-to-grid"],
+    "organization": "Industrial Technology Company",
+    "readiness": "Commercial",
+    "evidenceStatus": "synthetic-demo"
+  }
+]
