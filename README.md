@@ -2,6 +2,35 @@
 
 Reference implementation for compiling a synthetic airport image into a machine-readable, interactive opportunity environment.
 
+## Fastest way to run
+
+### GitHub Codespaces
+
+1. Open this repository on GitHub.
+2. Select **Code → Codespaces → Create codespace on main**.
+3. The compiler runs automatically.
+4. Port `8000` is forwarded automatically and the browser preview opens.
+
+The preview path is:
+
+```text
+/frontend/
+```
+
+No local cloning, Python installation, or Terminal authentication is required.
+
+### GitHub Pages
+
+The repository includes an automatic Pages deployment workflow. After Pages is enabled with **GitHub Actions** as its source, each push to `main` recompiles and redeploys the site.
+
+Repository setting:
+
+```text
+Settings → Pages → Build and deployment → Source: GitHub Actions
+```
+
+The root URL redirects to the interactive frontend.
+
 ## Core contract
 
 ```text
@@ -18,14 +47,17 @@ Synthetic Image
 ## Repository structure
 
 ```text
-compiler/       Python compilation engine
-schemas/        Machine-readable contracts
-environments/   Airport manifests and spatial maps
-ontology/       Canonical airport object definitions
-frontend/       Interactive hotspot demonstrator
-data/           Demonstration marketplace records
-docs/           Architecture and governance
-examples/       Compiled outputs
+.devcontainer/   One-click Codespaces environment
+.github/         GitHub Pages deployment workflow
+compiler/        Python compilation engine
+schemas/         Machine-readable contracts
+environments/    Airport manifests and spatial maps
+ontology/        Canonical airport object definitions
+frontend/        Interactive hotspot demonstrator
+data/            Demonstration marketplace records
+docs/            Architecture and governance
+examples/        Compiled outputs
+assets/          Synthetic environment imagery
 ```
 
 ## Run locally
@@ -40,8 +72,18 @@ python3 -m http.server 8000
 Open:
 
 ```text
-http://localhost:8000/frontend/
+http://localhost:8000/
 ```
+
+## Airport image
+
+The frontend expects the reference image at:
+
+```text
+assets/airport-reference.png
+```
+
+When that file is present, the photorealistic airport renders beneath the normalized semantic hotspot overlay. The frontend displays a clear missing-image message until the asset is committed.
 
 ## Current status
 
