@@ -5,19 +5,58 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Airport Opportunity Compiler</title>
 <style>
-:root{font-family:Inter,system-ui,sans-serif;color:#10233f;background:#f3f6fa}*{box-sizing:border-box}body{margin:0}header{padding:28px 34px;background:#0b2a52;color:white}header h1{margin:4px 0;font-size:clamp(28px,5vw,50px)}header p{margin:0;color:#c8d8ec}main{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(340px,.75fr);gap:20px;padding:20px}.canvas,.panel{background:white;border-radius:18px;overflow:hidden;box-shadow:0 14px 36px rgba(30,57,85,.12)}.scene{position:relative;aspect-ratio:16/9;background:linear-gradient(#bfe3ff 0 42%,#8da66e 42% 100%)}.airport{position:absolute;inset:0;width:100%;height:100%}.hotspot{fill:rgba(20,140,235,.14);stroke:white;stroke-width:.003;cursor:pointer}.hotspot:hover,.hotspot.active{fill:rgba(255,196,45,.45);stroke:#ffd34f}.panel{padding:24px;max-height:calc(100vh - 150px);overflow:auto}.empty{min-height:360px;display:grid;place-content:center;text-align:center;color:#65768b}.badge{display:inline-block;padding:6px 10px;border-radius:999px;background:#eaf5ff;color:#0868aa;font-size:12px;font-weight:800}.chips{display:flex;flex-wrap:wrap;gap:8px}.chip{padding:8px 10px;border-radius:999px;background:#f0f4f8;font-size:13px}.relation,.row{border-top:1px solid #e4eaf0;padding:14px 0}.card{padding:11px;border:1px solid #dfe6ee;border-radius:10px;margin-top:8px}.card span{display:block;color:#6c7a8c;font-size:12px;margin-top:4px}@media(max-width:900px){main{grid-template-columns:1fr}.panel{max-height:none}}
+:root{font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#10233f;background:#f3f6fa}
+*{box-sizing:border-box}
+body{margin:0}
+header{padding:28px 34px;background:#0b2a52;color:white}
+header h1{margin:4px 0;font-size:clamp(28px,5vw,50px)}
+header p{margin:0;color:#c8d8ec}
+main{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(340px,.75fr);gap:20px;padding:20px}
+.canvas,.panel{background:white;border-radius:18px;overflow:hidden;box-shadow:0 14px 36px rgba(30,57,85,.12)}
+.scene{position:relative;aspect-ratio:1648/928;background:#d9e5ef;overflow:hidden}
+.scene img{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover}
+.airport{position:absolute;inset:0;width:100%;height:100%;z-index:2}
+.hotspot{fill:rgba(20,140,235,.10);stroke:rgba(255,255,255,.95);stroke-width:.003;vector-effect:non-scaling-stroke;cursor:pointer;transition:fill .18s ease,stroke .18s ease}
+.hotspot:hover,.hotspot:focus,.hotspot.active{fill:rgba(255,196,45,.40);stroke:#ffd34f;outline:none}
+.image-error{position:absolute;inset:0;display:none;place-content:center;padding:30px;text-align:center;background:#edf3f8;color:#52657a;z-index:1}
+.image-error code{display:block;margin-top:10px;font-weight:700;color:#173b65}
+.panel{padding:24px;max-height:calc(100vh - 150px);overflow:auto}
+.empty{min-height:360px;display:grid;place-content:center;text-align:center;color:#65768b}
+.badge{display:inline-block;padding:6px 10px;border-radius:999px;background:#eaf5ff;color:#0868aa;font-size:12px;font-weight:800}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{padding:8px 10px;border-radius:999px;background:#f0f4f8;font-size:13px}
+.relation,.row{border-top:1px solid #e4eaf0;padding:14px 0}
+.card{padding:11px;border:1px solid #dfe6ee;border-radius:10px;margin-top:8px}
+.card span{display:block;color:#6c7a8c;font-size:12px;margin-top:4px}
+@media(max-width:900px){main{grid-template-columns:1fr}.panel{max-height:none}}
 </style>
 </head>
 <body>
 <header><small>REFERENCE IMPLEMENTATION</small><h1>Airport Opportunity Environment</h1><p>Click a highlighted airport system to generate its opportunity surface.</p></header>
 <main>
-<section class="canvas"><div class="scene"><svg class="airport" id="hotspots" viewBox="0 0 1 1" preserveAspectRatio="none"><rect x=".04" y=".14" width=".86" height=".07" transform="rotate(-5 .04 .14)" fill="#555"/><rect x=".14" y=".28" width=".75" height=".06" transform="rotate(3 .14 .28)" fill="#666"/><path d="M.30 .34 L.72 .34 L.79 .49 L.39 .50 Z" fill="#d9dde3"/><rect x=".48" y=".49" width=".25" height=".15" fill="#777"/><rect x=".24" y=".56" width=".20" height=".23" fill="#c2c7ce"/><circle cx=".33" cy=".61" r=".035" fill="#98a3ac"/><circle cx=".38" cy=".61" r=".035" fill="#98a3ac"/><polygon points=".72,.44 .91,.43 .91,.64 .73,.64" fill="#274f75" opacity=".8"/></svg></div></section>
+<section class="canvas">
+  <div class="scene">
+    <img id="airport-image" src="../assets/airport-reference.png" alt="Interactive airport opportunity environment">
+    <div class="image-error" id="image-error">
+      <div>
+        <h2>Airport image not found</h2>
+        <p>Place the reference image in:</p>
+        <code>assets/airport-reference.png</code>
+      </div>
+    </div>
+    <svg class="airport" id="hotspots" viewBox="0 0 1 1" preserveAspectRatio="none" aria-label="Airport semantic hotspot overlay"></svg>
+  </div>
+</section>
 <section class="panel" id="panel"><div class="empty"><div><h2>Select an airport system</h2><p>Canonical identity, relationships, opportunity families, and marketplace rows will appear here.</p></div></div></section>
 </main>
 <script>
+const airportImage=document.getElementById('airport-image');
+const imageError=document.getElementById('image-error');
+airportImage.addEventListener('error',()=>{airportImage.style.display='none';imageError.style.display='grid';});
+
 Promise.all([
- fetch('../environments/airports/reference-airport.json').then(r=>r.json()),
- fetch('../data/sample-catalog.json').then(r=>r.json())
+ fetch('../environments/airports/reference-airport.json').then(r=>{if(!r.ok)throw new Error('Manifest failed to load');return r.json()}),
+ fetch('../data/sample-catalog.json').then(r=>{if(!r.ok)throw new Error('Catalog failed to load');return r.json()})
 ]).then(([manifest,catalog])=>{
  const svg=document.getElementById('hotspots');
  const panel=document.getElementById('panel');
@@ -26,13 +65,22 @@ Promise.all([
    const p=document.createElementNS('http://www.w3.org/2000/svg','polygon');
    p.setAttribute('points',obj.geometry.points.map(([x,y])=>`${x},${y}`).join(' '));
    p.setAttribute('class','hotspot');
-   p.addEventListener('click',()=>{
-     document.querySelectorAll('.hotspot').forEach(x=>x.classList.remove('active'));p.classList.add('active');
+   p.setAttribute('tabindex','0');
+   p.setAttribute('role','button');
+   p.setAttribute('aria-label',obj.label);
+   const activate=()=>{
+     document.querySelectorAll('.hotspot').forEach(x=>x.classList.remove('active'));
+     p.classList.add('active');
      const matches=catalog.filter(r=>r.objectIds?.includes(obj.id)||r.opportunityFamilies?.some(f=>obj.opportunityFamilies.includes(f)));
      panel.innerHTML=`<span class="badge">${obj.category}</span><h2>${obj.label}</h2><p>${obj.canonicalType} · ${obj.id}</p><h3>Opportunity families</h3><div class="chips">${obj.opportunityFamilies.map(f=>`<span class="chip">${f}</span>`).join('')}</div><h3>System relationships</h3>${(obj.relationships||[]).map(r=>`<div class="relation"><strong>${r.type}</strong> → ${labels[r.target]||r.target}</div>`).join('')}<h3>Marketplace results (${matches.length})</h3>${matches.map(r=>`<div class="card"><strong>${r.title}</strong><span>${r.organization} · ${r.readiness}</span></div>`).join('')||'<p>No demonstration records.</p>'}`;
-   });
+   };
+   p.addEventListener('click',activate);
+   p.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();activate();}});
    svg.appendChild(p);
  });
+}).catch(error=>{
+ document.getElementById('panel').innerHTML=`<div class="empty"><div><h2>Compiler data failed to load</h2><p>${error.message}</p></div></div>`;
+ console.error(error);
 });
 </script>
 </body>
