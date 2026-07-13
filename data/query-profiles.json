@@ -1,0 +1,7 @@
+{
+  "airport-airside": {"include": ["aviation", "airport", "airside"], "exclude": []},
+  "airport-terminal": {"include": ["airport terminal", "passenger operations", "building systems"], "exclude": []},
+  "airport-utilities": {"include": ["airport utility plant", "district energy", "HVAC"], "exclude": []},
+  "airport-cooling": {"include": ["cooling tower", "industrial water", "HVAC"], "exclude": []},
+  "airport-mobility": {"include": ["airport mobility", "fleet", "parking", "shuttle"], "exclude": []}
+}
