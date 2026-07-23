@@ -30,6 +30,7 @@ def compile_real(payload: dict[str, Any]) -> dict[str, Any]:
         {"id":"env-msp-airport","type":"Environment","name":"Minneapolis–Saint Paul International Airport"},
         {"id":"org-metropolitan-airports-commission","type":"Organization","name":"Metropolitan Airports Commission"},
         {"id":"system-msp-concession-organics","type":"OperationalSystem","name":"MSP concession organics and composting system"},
+        {"id":"demand-msp-organics-performance","type":"DemandSignal","name":"MSP organics diversion and measurement demand"},
         {"id":"problem-msp-organics-value-gap","type":"Problem","name":"Organics are diverted, but higher-value conversion and auditable outcome pathways remain unproven"},
         {"id":"req-preserve-prevention-donation","type":"Requirement","name":"Preserve prevention and edible-food donation priority"},
         {"id":"req-improve-sorting-measurement","type":"Requirement","name":"Improve source sorting and measurement"},
@@ -92,7 +93,9 @@ def compile_real(payload: dict[str, Any]) -> dict[str, Any]:
         {"id":"variant-4","name":"Measured diversion and avoided-methane service","ingredients":["tech-oscar-ai-waste-sorting","method-epa-food-waste-methane","market-msp-concession-ecosystem"],"readiness":"high after data access","market_entities":["Metropolitan Airports Commission","concession operators","waste service contractor"]},
         {"id":"variant-5","name":"Integrated circular organics operating system","ingredients":["tech-oscar-ai-waste-sorting","tech-umn-hydrothermal-carbonization","patent-us9475698b2","method-epa-food-waste-methane","cap-umn-hydrothermal-carbonization"],"readiness":"longer-term validation","market_entities":["Metropolitan Airports Commission","University of Minnesota","concession operators","waste and engineering partners"]}
     ]
-    return {"slice_id":payload["slice_id"],"fixture_label":payload["label"],"source_records":records,"evidence":evidence,"canonical_entities":entities,"relationships":relationships,"opportunity_candidates":[candidate],"canonical_opportunities":[opportunity] if publishable else [],"build_variants":variants,"validation_report":{"valid":publishable and all(r["evidence_ids"] for r in relationships),"counts":{"source_records":10,"evidence":10,"canonical_entities":len(entities),"relationships":len(relationships),"opportunities":1 if publishable else 0,"build_variants":len(variants)},"score":score}}
+    entity_ids = {x["id"] for x in entities}
+    dangling = [r["id"] for r in relationships if r["source_entity_id"] not in entity_ids or r["target_entity_id"] not in entity_ids]
+    return {"slice_id":payload["slice_id"],"fixture_label":payload["label"],"source_records":records,"evidence":evidence,"canonical_entities":entities,"relationships":relationships,"opportunity_candidates":[candidate],"canonical_opportunities":[opportunity] if publishable else [],"build_variants":variants,"validation_report":{"valid":publishable and all(r["evidence_ids"] for r in relationships) and not dangling,"errors":[f"Dangling relationship: {x}" for x in dangling],"counts":{"source_records":10,"evidence":10,"canonical_entities":len(entities),"relationships":len(relationships),"opportunities":1 if publishable else 0,"build_variants":len(variants)},"score":score}}
 
 
 def main() -> None:
