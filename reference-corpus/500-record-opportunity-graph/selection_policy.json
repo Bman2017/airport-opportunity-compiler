@@ -1,0 +1,105 @@
+{
+  "policy_id": "reference-500-selection-policy-v1",
+  "source_universe": {
+    "existing_ingested_records": 52000,
+    "external_public_sources_enabled": true,
+    "reference_projection_size": 500
+  },
+  "selection_objective": "Choose a deeply enrichable, institutionally diverse, multi-domain, graph-productive and stress-test-complete projection rather than the 500 highest-similarity or best-populated records.",
+  "required_record_roles": {
+    "core_technology": 110,
+    "enabling_technology": 55,
+    "software_or_data": 35,
+    "patent_or_patent_family": 60,
+    "research_or_capability": 45,
+    "problem_or_requirement": 40,
+    "demand_or_buyer_signal": 35,
+    "deployment_environment": 25,
+    "program_policy_or_funding": 25,
+    "company_integrator_or_operator": 20,
+    "method_dataset_or_know_how": 20,
+    "constraint_or_negative_evidence": 15,
+    "cross_domain_outlier": 15
+  },
+  "institution_requirements": {
+    "minimum_distinct_institutions": 30,
+    "minimum_universities": 15,
+    "minimum_doe_labs": 8,
+    "nasa_required": true,
+    "minimum_other_federal_sources": 4,
+    "maximum_records_from_one_institution": 35
+  },
+  "domain_requirements": {
+    "minimum_distinct_domains": 15,
+    "required_domains": [
+      "airport_and_aviation",
+      "carbon_removal",
+      "carbon_to_value",
+      "built_environment",
+      "software_and_data",
+      "industrial_systems",
+      "energy",
+      "materials_and_manufacturing",
+      "food_and_agriculture",
+      "health_and_life_sciences",
+      "mobility_and_logistics",
+      "water",
+      "space",
+      "retail_and_circularity",
+      "cities_and_infrastructure"
+    ],
+    "required_outliers": [
+      "medical_imaging",
+      "agricultural_sensing",
+      "space_robotics",
+      "drug_delivery_materials",
+      "defense_logistics",
+      "battery_chemistry",
+      "satellite_sensing",
+      "textiles",
+      "marine_systems",
+      "consumer_packaging"
+    ]
+  },
+  "quality_dimensions": [
+    "source_authority",
+    "provenance_completeness",
+    "canonical_resolution_value",
+    "functional_extractability",
+    "requirement_linkability",
+    "cross_institution_value",
+    "cross_domain_value",
+    "deployment_relevance",
+    "commercial_pathway_value",
+    "negative_test_value"
+  ],
+  "stress_test_quotas": {
+    "likely_duplicate_or_same_family": 30,
+    "sparse_metadata_requiring_enrichment": 40,
+    "rights_or_availability_ambiguity": 25,
+    "contradictory_or_stale_evidence": 15,
+    "software_physical_pairing": 30,
+    "cross_campus_pairing": 35,
+    "federal_university_pairing": 30,
+    "cross_domain_transfer": 40,
+    "geographic_transfer": 25,
+    "missing_ingredient_completion": 40,
+    "deliberate_negative_match": 30
+  },
+  "selection_gates": [
+    "stable source identity exists",
+    "permitted use is known",
+    "record family is assigned",
+    "institution and domain are assigned or explicitly unresolved",
+    "record contributes to at least one graph role",
+    "record contributes to at least one acceptance test or opportunity recipe",
+    "duplicate candidates are retained only when needed to test entity resolution"
+  ],
+  "exclusions": [
+    "records selected solely because they have long descriptions",
+    "500 records from one domain or institution",
+    "untraceable aggregator copies when an authoritative source exists",
+    "records whose only value is lexical similarity",
+    "records requiring an unsupported partnership, license or buyer claim"
+  ]
+}
