@@ -1,0 +1,50 @@
+name: SpinOut Opportunity System Validation
+
+on:
+  pull_request:
+    paths:
+      - "vertical-slices/airport-carbon-10/**"
+      - "reference-corpus/500-record-opportunity-graph/**"
+      - "contracts/**"
+      - "docs/spinout-u-core-system-model-v1.md"
+      - ".github/workflows/airport-carbon-10-tests.yml"
+  push:
+    branches:
+      - agent/ten-record-airport-carbon-slice
+    paths:
+      - "vertical-slices/airport-carbon-10/**"
+      - "reference-corpus/500-record-opportunity-graph/**"
+      - "contracts/**"
+      - "docs/spinout-u-core-system-model-v1.md"
+      - ".github/workflows/airport-carbon-10-tests.yml"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate frozen core system model
+        run: python3 -m unittest discover -s contracts -p "test_*.py" -v
+      - name: Compile synthetic architecture fixture
+        run: python3 vertical-slices/airport-carbon-10/compile.py
+      - name: Generate synthetic graph and venture analysis
+        run: python3 vertical-slices/airport-carbon-10/analyze.py
+      - name: Compile verified MSP public-evidence slice
+        run: python3 vertical-slices/airport-carbon-10/compile_real.py
+      - name: Build federated 500-record acquisition projection
+        run: python3 reference-corpus/500-record-opportunity-graph/build_federated_projection.py
+      - name: Run airport-carbon test suite
+        run: python3 -m unittest discover -s vertical-slices/airport-carbon-10 -p "test_*.py" -v
+      - name: Run reference-corpus test suite
+        run: python3 -m unittest discover -s reference-corpus/500-record-opportunity-graph -p "test_*.py" -v
+      - name: Upload compiled outputs
+        uses: actions/upload-artifact@v4
+        with:
+          name: spinout-opportunity-graph-compiled
+          path: |
+            contracts/core-system-v1.json
+            vertical-slices/airport-carbon-10/compiled/*.json
+            reference-corpus/500-record-opportunity-graph/compiled/*.json

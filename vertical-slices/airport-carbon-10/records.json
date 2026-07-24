@@ -1,0 +1,126 @@
+{
+  "slice_id": "airport-carbon-10",
+  "label": "Synthetic architecture-validation fixture",
+  "records": [
+    {
+      "source_record_id": "src-001-airport-environment",
+      "source_class": "environment_profile",
+      "title": "Airport Alpha operating environment",
+      "body": "Airport Alpha contains passenger terminals, concessions, waste collection points, service roads, loading areas and back-of-house operations suitable for a controlled organic-waste pilot.",
+      "canonical_subject_id": "env-airport-alpha",
+      "source_reference": "internal-demo://airport-alpha/environment",
+      "retrieved_at": "2026-07-23",
+      "permitted_use": "internal-demo",
+      "claim_status": "synthetic",
+      "review_state": "approved_for_demo"
+    },
+    {
+      "source_record_id": "src-002-organic-waste-problem",
+      "source_class": "problem_evidence",
+      "title": "Mixed concession food waste creates avoidable hauling and carbon burdens",
+      "body": "The airport concession system generates variable organic waste that is collected with limited source-level measurement, increasing hauling cost and preventing auditable carbon outcomes.",
+      "canonical_subject_id": "problem-airport-organic-waste",
+      "source_reference": "internal-demo://airport-alpha/problem/organic-waste",
+      "retrieved_at": "2026-07-23",
+      "permitted_use": "internal-demo",
+      "claim_status": "synthetic",
+      "review_state": "approved_for_demo"
+    },
+    {
+      "source_record_id": "src-003-conversion-technology",
+      "source_class": "technology_listing",
+      "title": "Modular organic-waste carbon conversion system",
+      "body": "A modular system accepts separated food waste and converts it into a stable carbon-rich output while reducing material sent for disposal.",
+      "canonical_subject_id": "tech-modular-organic-carbon-conversion",
+      "source_reference": "internal-demo://technology/conversion",
+      "retrieved_at": "2026-07-23",
+      "permitted_use": "internal-demo",
+      "claim_status": "synthetic",
+      "review_state": "approved_for_demo"
+    },
+    {
+      "source_record_id": "src-004-mrv-technology",
+      "source_class": "technology_listing",
+      "title": "Distributed carbon measurement and chain-of-custody system",
+      "body": "A sensing and data system measures waste mass, processing conditions, output quantity and custody events to support auditable carbon accounting.",
+      "canonical_subject_id": "tech-distributed-carbon-mrv",
+      "source_reference": "internal-demo://technology/mrv",
+      "retrieved_at": "2026-07-23",
+      "permitted_use": "internal-demo",
+      "claim_status": "synthetic",
+      "review_state": "approved_for_demo"
+    },
+    {
+      "source_record_id": "src-005-patent-evidence",
+      "source_class": "patent",
+      "title": "Patent evidence for modular organic conversion",
+      "body": "Patent record describing a modular reactor configuration, controlled residence time and recoverable carbon-rich output.",
+      "canonical_subject_id": "patent-modular-organic-conversion",
+      "source_reference": "internal-demo://patent/conversion-001",
+      "retrieved_at": "2026-07-23",
+      "permitted_use": "internal-demo",
+      "claim_status": "synthetic",
+      "review_state": "approved_for_demo"
+    },
+    {
+      "source_record_id": "src-006-campus-capability",
+      "source_class": "capability_profile",
+      "title": "Campus organic-materials validation capability",
+      "body": "A nearby campus laboratory can characterize feedstock, test output stability and validate operating parameters for an airport pilot.",
+      "canonical_subject_id": "cap-campus-organic-materials-validation",
+      "source_reference": "internal-demo://campus/capability/organic-materials",
+      "retrieved_at": "2026-07-23",
+      "permitted_use": "internal-demo",
+      "claim_status": "synthetic",
+      "review_state": "approved_for_demo"
+    },
+    {
+      "source_record_id": "src-007-demand-signal",
+      "source_class": "demand_signal",
+      "title": "Buyer demand for measurable waste and carbon outcomes",
+      "body": "An airport services buyer seeks lower hauling cost, higher waste diversion and auditable carbon reporting without disrupting concession operations.",
+      "canonical_subject_id": "demand-measurable-airport-waste-carbon",
+      "source_reference": "internal-demo://demand/airport-waste-carbon",
+      "retrieved_at": "2026-07-23",
+      "permitted_use": "internal-demo",
+      "claim_status": "synthetic",
+      "review_state": "approved_for_demo"
+    },
+    {
+      "source_record_id": "src-008-funding-program",
+      "source_class": "program_profile",
+      "title": "Climate demonstration pilot program",
+      "body": "A demonstration program can support site validation, data collection and first-pilot deployment for emissions-reduction technologies.",
+      "canonical_subject_id": "program-climate-demonstration-pilot",
+      "source_reference": "internal-demo://program/climate-pilot",
+      "retrieved_at": "2026-07-23",
+      "permitted_use": "internal-demo",
+      "claim_status": "synthetic",
+      "review_state": "approved_for_demo"
+    },
+    {
+      "source_record_id": "src-009-implementation-capability",
+      "source_class": "capability_profile",
+      "title": "Airport waste operations implementation capability",
+      "body": "An implementation company can provide collection equipment, staff integration, maintenance and operational reporting for a pilot.",
+      "canonical_subject_id": "cap-airport-waste-implementation",
+      "source_reference": "internal-demo://company/capability/airport-waste",
+      "retrieved_at": "2026-07-23",
+      "permitted_use": "internal-demo",
+      "claim_status": "synthetic",
+      "review_state": "approved_for_demo"
+    },
+    {
+      "source_record_id": "src-010-methodology-constraint",
+      "source_class": "constraint_evidence",
+      "title": "Carbon claims require measurable baseline, custody and durability",
+      "body": "Any carbon claim must document a baseline, measured feedstock, conversion conditions, chain of custody, output durability and avoided double counting.",
+      "canonical_subject_id": "constraint-carbon-claim-integrity",
+      "source_reference": "internal-demo://constraint/carbon-integrity",
+      "retrieved_at": "2026-07-23",
+      "permitted_use": "internal-demo",
+      "claim_status": "synthetic",
+      "review_state": "approved_for_demo"
+    }
+  ]
+}

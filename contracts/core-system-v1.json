@@ -1,0 +1,250 @@
+{
+  "contractId": "spinout-u-core-system-v1",
+  "status": "frozen",
+  "effectiveDate": "2026-07-24",
+  "primaryUnitOfInvention": "Configuration",
+  "lifecycle": [
+    "Source",
+    "Evidence",
+    "CanonicalObject",
+    "CanonicalRelationship",
+    "Configuration",
+    "Opportunity",
+    "VentureProjection",
+    "Build",
+    "Deployment",
+    "Outcome",
+    "Learning"
+  ],
+  "rootObjectTypes": [
+    "Evidence",
+    "Actor",
+    "Asset",
+    "Knowledge",
+    "Need",
+    "Environment",
+    "Program",
+    "Policy",
+    "Commitment",
+    "Event",
+    "Configuration",
+    "Opportunity",
+    "Build",
+    "Outcome"
+  ],
+  "engines": [
+    "EvidenceAcquisitionEngine",
+    "CanonicalUnderstandingEngine",
+    "KnowledgeGraphEngine",
+    "ConfigurationEngine",
+    "OpportunityEngine",
+    "VentureEngine",
+    "DeploymentEngine",
+    "LearningEngine"
+  ],
+  "requiredContracts": {
+    "Evidence": [
+      "id",
+      "sourceRecordId",
+      "sourceSystem",
+      "sourceClass",
+      "sourceReference",
+      "publisher",
+      "retrievedAt",
+      "contentHash",
+      "permittedUse",
+      "claimStatus",
+      "reviewState"
+    ],
+    "CanonicalObject": [
+      "id",
+      "type",
+      "name",
+      "evidenceIds",
+      "status",
+      "visibility",
+      "provenance"
+    ],
+    "CanonicalRelationship": [
+      "id",
+      "sourceEntityId",
+      "type",
+      "targetEntityId",
+      "assertionType",
+      "confidence",
+      "evidenceIds",
+      "reviewState",
+      "visibility"
+    ],
+    "IngredientInterface": [
+      "functions",
+      "inputs",
+      "outputs",
+      "requirementsSatisfied",
+      "operatingConditions",
+      "deploymentEnvironments",
+      "dependencies",
+      "constraints",
+      "rightsStatus",
+      "readiness",
+      "commercialPathways"
+    ],
+    "Configuration": [
+      "id",
+      "title",
+      "configurationType",
+      "problemIds",
+      "requirementIds",
+      "ingredientIds",
+      "environmentIds",
+      "marketEntityIds",
+      "programIds",
+      "constraintIds",
+      "evidenceIds",
+      "satisfiedInterfaces",
+      "missingInterfaces",
+      "contradictions",
+      "scores",
+      "status",
+      "provenance"
+    ],
+    "Opportunity": [
+      "id",
+      "configurationId",
+      "title",
+      "score",
+      "scoreComponents",
+      "status",
+      "evidenceIds",
+      "missingIngredients",
+      "nonClaims",
+      "visibility"
+    ],
+    "VentureProjection": [
+      "id",
+      "opportunityId",
+      "ventureType",
+      "customerTypes",
+      "valueProposition",
+      "revenueModel",
+      "requiredRights",
+      "requiredTeamRoles",
+      "capitalNeeds",
+      "risks",
+      "milestones"
+    ],
+    "Build": [
+      "id",
+      "sourceOpportunityId",
+      "sourceConfigurationId",
+      "inheritedEntityIds",
+      "inheritedEvidenceIds",
+      "requirements",
+      "missingIngredients",
+      "nextAction",
+      "status",
+      "decisions",
+      "outcomes"
+    ],
+    "Outcome": [
+      "id",
+      "buildId",
+      "outcomeType",
+      "measurements",
+      "evidenceIds",
+      "observedAt",
+      "implications"
+    ]
+  },
+  "relationshipFamilies": {
+    "identityAndProvenance": [
+      "evidences",
+      "describes",
+      "derived_from",
+      "same_as",
+      "version_of",
+      "owned_by",
+      "developed_by",
+      "assigned_to"
+    ],
+    "functional": [
+      "performs",
+      "requires",
+      "produces",
+      "measures",
+      "controls",
+      "enables",
+      "converts",
+      "detects",
+      "stores",
+      "transports"
+    ],
+    "compatibility": [
+      "complements",
+      "substitutes_for",
+      "interfaces_with",
+      "depends_on",
+      "incompatible_with",
+      "constrained_by"
+    ],
+    "needAlignment": [
+      "addresses",
+      "satisfies",
+      "partially_satisfies",
+      "creates_requirement",
+      "validated_by_demand",
+      "blocked_by"
+    ],
+    "deployment": [
+      "deployable_in",
+      "hosted_by",
+      "operated_by",
+      "validated_by",
+      "funded_by",
+      "procured_by",
+      "integrated_by"
+    ],
+    "commercialization": [
+      "licensable_by",
+      "may_buy",
+      "may_sell_to",
+      "may_form_venture_with",
+      "may_generate_revenue_from"
+    ]
+  },
+  "configurationRecipesV1": [
+    "DirectTechnologyDeployment",
+    "TechnologyPlusEnablingSoftware",
+    "PatentBackedTechnologyBundle",
+    "CrossCampusCombination",
+    "FederalToMarketCombination",
+    "CarbonSystemConfiguration"
+  ],
+  "governance": {
+    "semanticSimilarityIsProof": false,
+    "publicProjectionMayExceedEvidence": false,
+    "everyRelationshipRequiresEvidence": true,
+    "everyInferredRelationshipRequiresConfidence": true,
+    "configurationIsPrimaryUnitOfInvention": true,
+    "opportunityIsEvaluatedConfiguration": true,
+    "buildIsActivatedOpportunityOrConfiguration": true,
+    "deploymentMustCreateLearning": true
+  },
+  "referenceAcceptanceTargets": {
+    "governedSourceRecords": 500,
+    "distinctInstitutionsMinimum": 30,
+    "distinctDomainsMinimum": 15,
+    "evidenceBackedRelationshipsMinimum": 1000,
+    "crossInstitutionRelationshipsMinimum": 200,
+    "crossDomainRelationshipsMinimum": 150,
+    "generatedConfigurationsMinimum": 500,
+    "opportunityCandidatesMinimum": 200,
+    "reviewQualityOpportunitiesMinimum": 50,
+    "publishableOpportunitiesMinimum": 20,
+    "ventureDesignsMinimum": 60,
+    "deploymentDesignsMinimum": 20,
+    "activationReadyBuildsMinimum": 5,
+    "relationshipProvenanceCoverage": 1.0,
+    "publicClaimPolicyCompliance": 1.0
+  }
+}

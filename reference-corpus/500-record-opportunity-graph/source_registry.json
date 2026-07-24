@@ -1,0 +1,96 @@
+{
+  "registry_id": "spinout-public-source-registry-v1",
+  "purpose": "Federate the existing 52000-record corpus with authoritative public university, laboratory, federal, patent, research, market, program and deployment sources.",
+  "source_channels": [
+    {
+      "id": "existing-technology-corpus",
+      "name": "SpinOut U existing 52000-record corpus",
+      "adapter_type": "internal_corpus",
+      "priority": 1,
+      "reference_quota": 300,
+      "graph_roles": ["core_technology", "patent", "licensing_listing", "research_asset", "software", "dataset"],
+      "refresh_policy": "snapshot_plus_source_refresh",
+      "authoritative_for": ["existing_source_identity", "ingested_content", "ingestion_provenance"]
+    },
+    {
+      "id": "university-public-portfolios",
+      "name": "University technology transfer and research repositories",
+      "adapter_type": "federated_html_api_repository",
+      "priority": 2,
+      "reference_quota": 60,
+      "graph_roles": ["technology", "patent", "capability", "research", "inventor", "licensing_pathway"],
+      "refresh_policy": "monthly",
+      "authoritative_for": ["institutional_listing", "public_availability_signal", "researcher_affiliation"]
+    },
+    {
+      "id": "doe-osti-national-labs",
+      "name": "DOE, OSTI and national laboratory public sources",
+      "adapter_type": "api_and_repository",
+      "priority": 2,
+      "reference_quota": 40,
+      "graph_roles": ["federal_technology", "research", "dataset", "software", "facility_capability"],
+      "refresh_policy": "monthly",
+      "authoritative_for": ["doe_funded_research", "lab_affiliation", "federal_source_metadata"]
+    },
+    {
+      "id": "nasa-technology-transfer",
+      "name": "NASA patents, software, technology transfer and spinoff sources",
+      "adapter_type": "api_and_repository",
+      "priority": 2,
+      "reference_quota": 25,
+      "graph_roles": ["federal_technology", "patent", "software", "spinoff_evidence", "cross_domain_transfer"],
+      "refresh_policy": "monthly",
+      "authoritative_for": ["nasa_source_identity", "nasa_center", "public_technology_description"]
+    },
+    {
+      "id": "uspto-patent-enrichment",
+      "name": "USPTO and public patent-data enrichment",
+      "adapter_type": "patent_api",
+      "priority": 2,
+      "reference_quota": 25,
+      "graph_roles": ["patent", "patent_family", "inventor", "assignee", "classification", "citation"],
+      "refresh_policy": "quarterly",
+      "authoritative_for": ["patent_identity", "inventor", "assignee", "classification", "legal_event_signal"]
+    },
+    {
+      "id": "corporate-market-demand",
+      "name": "Corporate challenges, procurement signals and market-pull evidence",
+      "adapter_type": "public_web_and_procurement",
+      "priority": 3,
+      "reference_quota": 20,
+      "graph_roles": ["demand_signal", "buyer", "requirement", "procurement_pathway"],
+      "refresh_policy": "weekly",
+      "authoritative_for": ["published_demand", "public_procurement_signal", "corporate_problem_statement"]
+    },
+    {
+      "id": "grants-policy-programs",
+      "name": "Federal grants, programs, solicitations and policy sources",
+      "adapter_type": "public_api_and_feed",
+      "priority": 3,
+      "reference_quota": 15,
+      "graph_roles": ["funding_pathway", "program", "policy", "eligibility", "deadline"],
+      "refresh_policy": "daily_or_weekly",
+      "authoritative_for": ["program_status", "solicitation_status", "eligibility", "deadline"]
+    },
+    {
+      "id": "deployment-environments",
+      "name": "Airports, campuses, cities, buildings, utilities and operating-system evidence",
+      "adapter_type": "public_documents_and_data",
+      "priority": 3,
+      "reference_quota": 15,
+      "graph_roles": ["environment", "operational_system", "problem", "requirement", "host", "pilot_site"],
+      "refresh_policy": "quarterly",
+      "authoritative_for": ["public_operating_context", "site_characteristics", "published_plan_or_goal"]
+    }
+  ],
+  "quota_total": 500,
+  "governance": {
+    "no_partnership_inference": true,
+    "no_license_availability_inference": true,
+    "no_buyer_commitment_inference": true,
+    "no_funding_award_inference": true,
+    "public_output_requires_evidence": true,
+    "source_records_are_immutable": true,
+    "canonical_entities_are_separate_from_source_records": true
+  }
+}

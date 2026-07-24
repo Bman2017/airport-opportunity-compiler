@@ -1,0 +1,68 @@
+{
+  "manifest_id": "spinout-u-opportunity-graph-reference-corpus-v1",
+  "version": "1.0.0",
+  "target_record_count": 500,
+  "purpose": "Create a governed, institutionally diverse, multi-domain reference corpus that stress-tests canonicalization, semantic enrichment, graph construction, cross-domain recombination, opportunity generation, commercialization design, marketplace projection, and Build creation.",
+  "record_families": [
+    {"id":"university_technology_ip","count":120,"graph_roles":["core_technology","adjacent_technology","complementary_ip","licensing_asset"]},
+    {"id":"doe_lab_technology","count":60,"graph_roles":["federal_technology","scale_up_capability","process_technology","validation_asset"]},
+    {"id":"nasa_federal_technology","count":30,"graph_roles":["cross_domain_technology","software","sensing","robotics","materials"]},
+    {"id":"patent_family","count":50,"graph_roles":["rights_evidence","technical_evidence","licensing_constraint"]},
+    {"id":"research_capability_lab","count":35,"graph_roles":["validation_capability","know_how","testbed","expertise"]},
+    {"id":"corporate_demand_signal","count":40,"graph_roles":["market_pull","buyer_requirement","procurement_signal","deployment_need"]},
+    {"id":"problem_requirement","count":35,"graph_roles":["problem","requirement","desired_outcome","constraint"]},
+    {"id":"deployment_environment","count":20,"graph_roles":["airport","campus","factory","hospital","data_center","port","city","farm","retail","utility"]},
+    {"id":"software_data_technology","count":25,"graph_roles":["software","digital_twin","optimization","mrv","computer_vision","data_platform"]},
+    {"id":"built_environment_technology","count":20,"graph_roles":["hvac","thermal_storage","controls","refrigerants","materials","grid_flexibility"]},
+    {"id":"carbon_removal_c2v","count":30,"graph_roles":["carbon_removal","carbon_to_value","biochar","mineralization","dac","mrv"]},
+    {"id":"funding_policy_program","count":15,"graph_roles":["funding_pathway","policy_pathway","pilot_program","commercialization_program"]},
+    {"id":"company_integrator_operator","count":10,"graph_roles":["buyer","integrator","operator","host","channel"]},
+    {"id":"know_how_method_dataset","count":10,"graph_roles":["method","protocol","dataset","tacit_know_how","measurement_standard"]}
+  ],
+  "institution_sets": {
+    "universities": ["University of Minnesota","University of Washington","Georgia Tech","Carnegie Mellon University","University of Pennsylvania","Vanderbilt University","Rice University","University of Texas at Austin","University of Michigan","UCLA","Northwestern University","University of Wisconsin-Madison","University of Arizona","UC Riverside","University of Florida"],
+    "doe_labs": ["NREL","Oak Ridge National Laboratory","Lawrence Berkeley National Laboratory","Argonne National Laboratory","Sandia National Laboratories","Pacific Northwest National Laboratory","National Energy Technology Laboratory","Idaho National Laboratory"],
+    "federal": ["NASA","USDA","NIH","EPA","FAA","US Department of Transportation"]
+  },
+  "domain_clusters": ["airport_aviation","carbon_removal","carbon_to_value","built_environment","software_data","industrial_systems","energy","materials_manufacturing","food_agriculture","health_life_sciences","mobility_logistics","water","space","retail_circularity","cities_infrastructure"],
+  "required_outlier_domains": ["medical_imaging","agricultural_sensing","space_robotics","drug_delivery_materials","water_treatment","defense_logistics","food_preservation","battery_chemistry","satellite_sensing","textiles","marine_systems","consumer_packaging"],
+  "required_semantic_facets": ["functions","inputs","outputs","constraints","requirements_satisfied","deployment_environments","industry_applications","readiness_signals","complementary_components","substitutes","evidence_ids","rights_status","geography","commercial_pathways"],
+  "opportunity_recipes": [
+    "technology_deployment",
+    "ip_bundle",
+    "cross_campus_venture",
+    "federal_to_market_transfer",
+    "carbon_system",
+    "built_environment_system",
+    "software_physical_system",
+    "cross_domain_transfer",
+    "place_based_opportunity",
+    "missing_ingredient_completion",
+    "venture_formation",
+    "pilot_and_procurement"
+  ],
+  "acceptance_thresholds": {
+    "exact_record_count": 500,
+    "minimum_distinct_institutions": 30,
+    "minimum_distinct_domains": 15,
+    "minimum_cross_institution_relationships": 200,
+    "minimum_cross_domain_relationships": 150,
+    "minimum_semantic_candidate_pairs": 5000,
+    "minimum_requirement_linked_candidates": 500,
+    "minimum_opportunity_candidates": 200,
+    "minimum_review_candidates": 50,
+    "minimum_publishable_opportunities": 20,
+    "minimum_activation_ready_builds": 5,
+    "maximum_single_institution_share": 0.10,
+    "all_relationships_require_evidence": true,
+    "all_inferences_require_confidence": true,
+    "all_public_outputs_require_disclosure_policy": true
+  },
+  "non_claims": [
+    "Inclusion does not imply partnership, endorsement, licensing availability, or deployment commitment.",
+    "Semantic similarity does not by itself establish technical compatibility or commercial viability.",
+    "Patent inclusion does not establish freedom to operate.",
+    "Carbon-related inclusion does not establish carbon-credit eligibility or durable removal.",
+    "Corporate inclusion does not establish buyer intent unless supported by a qualifying demand signal."
+  ]
+}
