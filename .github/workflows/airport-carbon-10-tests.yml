@@ -1,15 +1,17 @@
-name: Airport Carbon 10 Validation
+name: Airport Carbon and Reference Corpus Validation
 
 on:
   pull_request:
     paths:
       - "vertical-slices/airport-carbon-10/**"
+      - "reference-corpus/500-record-opportunity-graph/**"
       - ".github/workflows/airport-carbon-10-tests.yml"
   push:
     branches:
       - agent/ten-record-airport-carbon-slice
     paths:
       - "vertical-slices/airport-carbon-10/**"
+      - "reference-corpus/500-record-opportunity-graph/**"
       - ".github/workflows/airport-carbon-10-tests.yml"
 
 jobs:
@@ -26,10 +28,16 @@ jobs:
         run: python3 vertical-slices/airport-carbon-10/analyze.py
       - name: Compile verified MSP public-evidence slice
         run: python3 vertical-slices/airport-carbon-10/compile_real.py
-      - name: Run complete test suite
+      - name: Build federated 500-record acquisition projection
+        run: python3 reference-corpus/500-record-opportunity-graph/build_federated_projection.py
+      - name: Run airport-carbon test suite
         run: python3 -m unittest discover -s vertical-slices/airport-carbon-10 -p "test_*.py" -v
+      - name: Run reference-corpus test suite
+        run: python3 -m unittest discover -s reference-corpus/500-record-opportunity-graph -p "test_*.py" -v
       - name: Upload compiled outputs
         uses: actions/upload-artifact@v4
         with:
-          name: airport-carbon-10-compiled
-          path: vertical-slices/airport-carbon-10/compiled/*.json
+          name: spinout-opportunity-graph-compiled
+          path: |
+            vertical-slices/airport-carbon-10/compiled/*.json
+            reference-corpus/500-record-opportunity-graph/compiled/*.json
